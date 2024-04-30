@@ -5,7 +5,7 @@ This script fetches the status from https://alx-intranet.hbtn.io/status
 import urllib.request
 
 
-if __name__ == "__main__":
+def main():
     url = "https://alx-intranet.hbtn.io/status"
     with urllib.request.urlopen(url) as response:
         content = response.read()
@@ -15,3 +15,7 @@ if __name__ == "__main__":
     print(f"    - type: {type(content)}")
     print(f"    - content: {content}")
     print(f"    - utf8 content: {utf8_content}")
+
+
+if __name__ == "__main__":
+    main()
