@@ -1,0 +1,23 @@
+#!/usr/bin/make -s -f
+TARGET_MAKEFILE := makefile
+OLD_MAIN_FILE := $(shell grep -oP 'SCRIPT = \K.*' $(TARGET_MAKEFILE))
+
+# Get the latest file number
+LATEST_NUM := $(shell ls -v | grep -oP '^\K\d+' | tail -n 1)
+
+# Check if main and test files exist for the latest number
+MAIN_FILE := $(shell if [ -f "$(LATEST_NUM)-main.py" ]; then echo "$(LATEST_NUM)-main.py"; fi)
+TEST_FILES := $(shell ls -v $(LATEST_NUM)*.py | grep -v "$(LATEST_NUM)-main.py")
+
+.PHONY: update_makefile
+update_makefile:
+		@echo "Updating $(TARGET_MAKEFILE)..."
+		@if [ "$(MAIN_FILE)" = "$(OLD_MAIN_FILE)" ]; then \
+                echo "No new main file found..."; \
+                sed -i 's|SCRIPT = .*|SCRIPT = |' $(TARGET_MAKEFILE); \
+                sed -i 's|EXECUTABLE = .*|EXECUTABLE = $(TEST_FILES)|' $(TARGET_MAKEFILE); \
+		else \
+                sed -i 's|SCRIPT = .*|SCRIPT = $(MAIN_FILE)|' $(TARGET_MAKEFILE); \
+                sed -i 's|EXECUTABLE = .*|EXECUTABLE = $(MAIN_FILE)|' $(TARGET_MAKEFILE); \
+		fi
+		@sed -i 's|FILE = .*|FILE = $(TEST_FILES)|' $(TARGET_MAKEFILE)

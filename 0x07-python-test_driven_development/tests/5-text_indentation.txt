@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hi. It's Me?")
+Hi.
+<BLANKLINE>
+It's Me?
+<BLANKLINE>
+>>> text_indentation(346)
+Traceback (most recent call last):
+...
+TypeError: text must be a string

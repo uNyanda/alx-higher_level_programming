@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix = [[1, 2], [3, 4]]
+>>> print(matrix_divided(matrix, 2))
+[[0.5, 1.0], [1.5, 2.0]]
+
+>>> try:
+...     matrix_divided("not a matrix", 2)
+... except TypeError as e:
+...     print(e)
+matrix must be a matrix (list of lists) of integers/floats
+
+>>> try:
+...     matrix_divided(matrix, "not a number")
+... except TypeError as e:
+...     print(e)
+div must be a number
+
+>>> try:
+...     matrix_divided(matrix, 0)
+... except ZeroDivisionError as e:
+...     print(e)
+division by zero

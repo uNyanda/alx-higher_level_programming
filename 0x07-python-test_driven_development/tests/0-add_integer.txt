@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+
+"""
+This is a test file for the 'add_integer' function of the '0-add_integer' module.
+
+The tests are written as interactive examples in the docstring.
+
+To run the tests, use the following command:
+python3 -m doctest -v ./tests/0-add_integer.txt
+"""
+
+>>> add_integer = __import__('0-add_integer').add_integer
+
+>>> add_integer(1, 2)
+3
+>>> add_integer(1.5, 2.5)
+3
+>>> add_integer(1.5)
+99
+>>> add_integer('1', 2)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(1, '2')
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+>>> add_integer(-1, -1)
+-2
+>>> add_integer(1.1, 1.9)
+2
+>>> add_integer(1.9, 0.1)
+1
