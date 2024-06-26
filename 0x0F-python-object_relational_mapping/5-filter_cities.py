@@ -48,8 +48,10 @@ if __name__ == "__main__":
         rows = cursor.fetchone()
 
         # Print the result if it's not None
-        if rows:
+        if rows and rows[0] is not None:
             print(rows[0])
+        else:
+            print("")
 
         # Close the cursor and connection
         cursor.close()
