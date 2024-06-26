@@ -8,7 +8,7 @@ import MySQLdb
 
 if __name__ == "__main__":
     # Check for correct number of arguments
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 4:
         print("Usage: {} <username> <password> <database>"
               .format(sys.argv[0]))
         sys.exit(1)
