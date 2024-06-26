@@ -48,5 +48,5 @@ if __name__ == "__main__":
         db.close()
 
     except MySQLdb.Error as e:
-        print("MySQL eRROR {}: {}".format(e.args[0], e.args[1]))
+        print("MySQL Error {}: {}".format(e.args[0], e.args[1]))
         sys.exit(1)
