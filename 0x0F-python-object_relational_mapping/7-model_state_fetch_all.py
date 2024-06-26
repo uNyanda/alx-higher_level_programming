@@ -21,18 +21,23 @@ if __name__ == "__main__":
     pwd = sys.argv[2]
     dtb = sys.argv[3]
 
-    # Create engine and bindto session
-    engine = create_engine(f'mysql+mysqldb:\
-        //{usr}:{pwd}@localhost:3306/{dtb}')
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    # Create engine and bind to session
+    try:
+        engine = create_engine(
+            f'mysql+mysqldb://{usr}:{pwd}@localhost:3306/{dtb}'
+        )
+        Session = sessionmaker(bind=engine)
+        session = Session()
 
-    # Query all State objects and sort by id
-    states = session.query(State).order_by(State.id).all()
+        # Query all State objects and sort by id
+        states = session.query(State).order_by(State.id).all()
 
-    # Print the results
-    for state in states:
-        print(f"{state.id}:{state.name}")
+        # Print the results
+        for state in states:
+            print(f"{state.id}: {state.name}")
 
-    # Close the session
-    session.close()
+        # Close the session
+        session.close()
+
+    except Exception as e:
+        print(f"Error: {e}")
