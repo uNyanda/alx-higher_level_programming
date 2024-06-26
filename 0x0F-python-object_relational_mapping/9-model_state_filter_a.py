@@ -24,9 +24,9 @@ if __name__ == "__main__":
     try:
         engine = create_engine(
             f'mysql+mysqldb://{usr}:{pwd}@localhost:3306/{dtb}'
-	)
-	    Session = sessionmaker(bind=engine)
-	    session = Session()
+        )
+        Session = sessionmaker(bind=engine)
+        session = Session()
 
         # Query State objects containing 'a' in their name, sorted by id
         states_with_a = session.query(State).filter(
@@ -43,4 +43,3 @@ if __name__ == "__main__":
         session.close()
     except Exception as e:
         print(f'Error: {e}')
-
