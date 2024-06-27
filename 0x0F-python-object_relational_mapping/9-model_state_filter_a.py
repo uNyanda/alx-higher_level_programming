@@ -29,15 +29,12 @@ if __name__ == "__main__":
         session = Session()
 
         # Query State objects containing 'a' in their name, sorted by id
-        states_with_a = session.query(State).filter(
-            State.name.like('%a')).order_by(State.id).all()
+        states_with_a = session.query(
+            State).filter(State.name.like('%a%')).order_by(State.id).all()
 
         # Print the result
-        if states_with_a:
-            for state in states_with_a:
-                print(f'{state.id}: {state.name}')
-        else:
-            print('Nothing')
+        for state in states_with_a:
+            print(f'{state.id}: {state.name}')
 
         # Close the session
         session.close()
