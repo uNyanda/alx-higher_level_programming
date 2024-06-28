@@ -16,11 +16,20 @@ class State(Base):
     that inherits from Base
     """
     __tablename__ = 'states'
-    from relationship_city import City
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=True)
     name = Column(String(128), nullable=True)
 
-    # Define relationship to City with scade delete
+    # Define relationship to City with cascade delete
     cities = relationship('City', back_populates='state',
                           cascade='all, delete-orphan')
+
+    # Import the City class at method level to resolve circular import issues
+    @staticmethod
+    def deferred_import():
+        global City
+        from relationship_city import City
+
+
+# Perform the deferred import
+State.deferred_import()
