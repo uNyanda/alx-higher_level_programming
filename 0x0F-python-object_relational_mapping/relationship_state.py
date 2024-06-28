@@ -22,3 +22,5 @@ class State(Base):
     # Define relationship to City with scade delete
     cities = relationship('City', back_populates='state',
                           cascade='all, delete-orphan')
+
+from relationship_city import City
