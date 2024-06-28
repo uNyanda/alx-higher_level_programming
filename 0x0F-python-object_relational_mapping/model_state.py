@@ -2,7 +2,7 @@
 """This script starts a link class to a table in the database"""
 import sys
 from sqlalchemy import Column, Integer, String, create_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
 
@@ -12,11 +12,14 @@ class State(Base):
     Class definition for the State model in SQLAlchemy.
 
     This class represents a state entity, mapping to the 'states'
-    table i a MySQL database
+    table in a MySQL database
     """
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
+
+    # Define relationship to City
+    cities = relationship('City', back_populates='state')
 
 
 if __name__ == "__main__":
@@ -36,5 +39,5 @@ if __name__ == "__main__":
         {password}@localhost:3306/{database}",
                            pool_pre_ping=True)
 
-    # Crate table in the database
+    # Create table in the database
     Base.metadata.create_all(engine)
