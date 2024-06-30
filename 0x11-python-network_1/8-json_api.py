@@ -8,7 +8,7 @@ import sys
 
 
 if __name__ == "__main__":
-    # Get the letter from the command-line arguments or set to empty string if no
+    # Get letter from command-line arguments or set to empty string if no
     if len(sys.argv) > 1:
         letter = sys.argv[1]
     else:
