@@ -9,13 +9,13 @@ import sys
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print("Usage: {} <username> <token>".format(sys.argv[0]))
+        print(f"Usage: {sys.argv[0]} <username> <token>")
         sys.exit(1)
 
     username = sys.argv[1]
     token = sys.argv[2]
 
-    url = f'https://api.github.con/users/{username}'
+    url = f'https://api.github.com/users/{username}'
     headers = {
         "Authorization": f'token {token}',
         "Accept": "application/vnd.github.v3+json"
