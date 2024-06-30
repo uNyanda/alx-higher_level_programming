@@ -18,8 +18,7 @@ if __name__ == '__main__':
     owner = sys.argv[2]
 
     # GitHub API endpoint for commits
-    link = 'https://api.github.com/repos/{owner}/{repository}/commits'
-    url = f'{link}'
+    url = f'https://api.github.com/repos/{owner}/{repository}/commits'
 
     try:
         response = requests.get(url)
