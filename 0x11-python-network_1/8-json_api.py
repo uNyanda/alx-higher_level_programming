@@ -28,7 +28,7 @@ def fetch_user():
 
         # Check if json_response is not empty
         if json_response:
-            print(f"[{json_response.get('id')}] {json_response.get('name')}]")
+            print(f"[{json_response.get('id')}] {json_response.get('name')}")
         else:
             print('No result')
     except ValueError:
