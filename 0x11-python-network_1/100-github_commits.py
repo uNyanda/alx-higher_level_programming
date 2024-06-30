@@ -14,11 +14,12 @@ if __name__ == '__main__':
         print(f'Usage: {sys.argv[0]} <repository_name> <owner_name>')
         sys.exit(1)
 
-    repository_name = sys.argv[1]
-    owner_name = sys.argv[2]
+    repository = sys.argv[1]
+    owner = sys.argv[2]
 
     # GitHub API endpoint for commits
-    url = f'https://api.github.com/repos/{owner_name}/{repository_name}/commits'
+    link = 'https://api.github.com/repos/{owner}/{repository}/commits'
+    url = f'{link}'
 
     try:
         response = requests.get(url)
