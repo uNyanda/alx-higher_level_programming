@@ -4,6 +4,7 @@ This script sends a POST request to a given URL with an email as a parameter
 and displays the response body.
 """
 import urllib.request
+import urllib.parse
 import sys
 
 
@@ -14,8 +15,7 @@ if __name__ == "__main__":
     data = urllib.parse.urlencode({"email": email}).encode("utf-8")
 
     # create a request and send it
-    with urllib.request.urlopen(url, data=data) as response:
+    with urllib.request.urlopen(url, data) as response:
         content = response.read().decode("utf-8")
 
-    print(f"Your email is: {email}")
-    print(f"Response body: {content}")
+    print(content)
