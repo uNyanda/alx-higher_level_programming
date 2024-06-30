@@ -9,10 +9,7 @@ import sys
 
 if __name__ == "__main__":
     # Get letter from command-line arguments or set to empty string if no
-    if len(sys.argv) > 1:
-        letter = sys.argv[1]
-    else:
-        letter = ""
+    letter = sys.argv[1] if len(sys.argv) > 1 else ""
 
     # Prepare the data for the POST request
     data = {'q': letter}
@@ -23,6 +20,8 @@ if __name__ == "__main__":
     try:
         # Attempt to parse the JSON respons
         json_response = response.json()
+
+        # Check if json_response is not empty
         if json_response:
             print(f'[{json_response.get('id')}] {json_response.get('name')}]')
         else:
